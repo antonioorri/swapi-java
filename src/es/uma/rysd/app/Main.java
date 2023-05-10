@@ -9,13 +9,13 @@ import es.uma.rysd.entities.Person;
 import es.uma.rysd.entities.World;
 
 public class Main {	
-	private static Random rand; // para números aleatorios
+	private static Random rand; // para nï¿½meros aleatorios
 	private static Scanner sc; // para leer de teclado
 	private final static String proxy = "proxy.lcc.uma.es";
 	private final static String proxy_port = "3128";
 	
     public static void main(String[] args) {
-    	// Descomente las siguiente líneas si lo está probando en el laboratorio y accede a Internet usando el proxy
+    	// Descomente las siguiente lï¿½neas si lo estï¿½ probando en el laboratorio y accede a Internet usando el proxy
     	// System.setProperty("https.proxyHost",proxy); 
     	// System.setProperty("https.proxyPort",proxy_port);
     	
@@ -25,8 +25,8 @@ public class Main {
         sc = new Scanner(System.in);
 
         do{
-        	tallest(sw);
-        	// whoBornIn1(sw);
+        	//tallest(sw);
+        	 whoBornIn1(sw);
 			// whoBornIn2(sw);
 	       	System.out.println("Desea otra ronda (s/n)?");
 	       	response = sc.nextLine();
@@ -35,7 +35,7 @@ public class Main {
         
     }
     
-    // Genera un número entre 0 y max-1 que no haya sido usado previamente (los usados vienen en l)
+    // Genera un nï¿½mero entre 0 y max-1 que no haya sido usado previamente (los usados vienen en l)
     public static Integer getRandomResource(int max, List<Integer> l){
     	if(max == l.size()) return null;
 
@@ -72,10 +72,10 @@ public class Main {
     		used.add(p);
     	}
     	
-    	// Escribiendo la pregunta y leyendo la opción
+    	// Escribiendo la pregunta y leyendo la opciï¿½n
     	Integer n = null;
     	do{
-    		System.out.println("¿Quién es más alto? [0] "+ people.get(0).name + " o [1] " + people.get(1).name);
+    		System.out.println("ï¿½Quiï¿½n es mï¿½s alto? [0] "+ people.get(0).name + " o [1] " + people.get(1).name);
     		try{
     			n = Integer.parseInt(sc.nextLine());
     		}catch(NumberFormatException ex){
@@ -83,7 +83,7 @@ public class Main {
     		}
     	}while(n != 0 && n != 1);
     	
-    	// Mostrando la información de los personajes elegidos
+    	// Mostrando la informaciï¿½n de los personajes elegidos
     	for(Person p: people){
     		System.out.println(p.name + " mide " + p.height);
     	}
@@ -98,8 +98,8 @@ public class Main {
     
     // Pregunta que relaciona varios recursos:
     // - Elige un recurso (planeta en este caso)
-    // - Pregunta sobre algún recurso relacionado (persona que nació o fue crear ahí)
-    // - Busca ese recurso y comprueba si está relacionado con el primero (si la persona buscada tiene como planeta el original)
+    // - Pregunta sobre algï¿½n recurso relacionado (persona que naciï¿½ o fue crear ahï¿½)
+    // - Busca ese recurso y comprueba si estï¿½ relacionado con el primero (si la persona buscada tiene como planeta el original)
     public static void whoBornIn1(SWClient sw){
     	// Obteniendo la cantidad de planetas
     	int max_planet = sw.getNumberOfResources("planets");
@@ -123,7 +123,7 @@ public class Main {
 
         // Planteamos la pregunta
         String s = null;
-   		System.out.println("¿Quién nació o fue creado en " + world.name + "?");
+   		System.out.println("ï¿½Quiï¿½n naciï¿½ o fue creado en " + world.name + "?");
    		s = sc.nextLine();
    		// Buscamos la persona indicada
    		Person p = sw.search(s);
@@ -132,7 +132,7 @@ public class Main {
    		if(p == null){
    			System.out.println("No hay nadie con ese nombre");
    		} else {
-   			System.out.println(p.name + " nació en " + p.homeplanet.name);
+   			System.out.println(p.name + " naciï¿½ en " + p.homeplanet.name);
    		}
    		
    		// Resultados
@@ -145,7 +145,7 @@ public class Main {
     
     // Similar a la previa pero en vez de solicitar que escriba se le ofrecen alternativa para ello:
     // - Se elige una al azar de las disponibles en el recurso, persona del planeta (la correcta)
-    // - Se buscar aleatoriamente otras 3 que no estén relacionados con el recurso (las incorrectas)
+    // - Se buscar aleatoriamente otras 3 que no estï¿½n relacionados con el recurso (las incorrectas)
     // - Se inserta la correcta de forma aleatoria
     public static void whoBornIn2(SWClient sw){
     	
@@ -178,7 +178,7 @@ public class Main {
         	used.add(sw.getIDFromURL(s));
         }
         
-        // Buscamos 3 más
+        // Buscamos 3 mï¿½s
         List<Person> people = new ArrayList<Person>();
         int contador = 0;
     	while(contador < 3){
@@ -196,10 +196,10 @@ public class Main {
     	int pos_correct = rand.nextInt(4);
     	people.add(pos_correct, correct);
     	
-    	// Leemos la opción
+    	// Leemos la opciï¿½n
     	Integer n = null;
     	do{
-    		System.out.print("¿Quién nació o fue fabricado en "+ world.name +"?");
+    		System.out.print("ï¿½Quiï¿½n naciï¿½ o fue fabricado en "+ world.name +"?");
     		for(int i = 0; i < 4; i++){
     			System.out.print(" ["+i+"] "+ people.get(i).name);
     		}
@@ -213,7 +213,7 @@ public class Main {
     	
     	// Se muestran los resultados    	
     	for(Person p: people){
-    		System.out.println(p.name + " nació en " + p.homeplanet.name);
+    		System.out.println(p.name + " naciï¿½ en " + p.homeplanet.name);
     	}
     	
     	// Resultados
@@ -225,24 +225,24 @@ public class Main {
     }     
   
 	private static String [] success = {"This is the way",
-			"Eres uno con la Fuerza. La Fuerza está contigo",
-			"Que la fuerza te acompañe",
+			"Eres uno con la Fuerza. La Fuerza estï¿½ contigo",
+			"Que la fuerza te acompaï¿½e",
 			"Nada ocurre por accidente",
 			"Sin duda, maravillosa tu mente es",
-			"Cuando te fuiste, no era más que el aprendiz. Ahora eres el maestro",
-			"La Fuerza te está llamando, déjala entrar",
+			"Cuando te fuiste, no era mï¿½s que el aprendiz. Ahora eres el maestro",
+			"La Fuerza te estï¿½ llamando, dï¿½jala entrar",
 			"Tu cantidad de midiclorianos debe ser muy alta",
-			"Una lección aprendida es una lección ganada",
-			"Debes creer en ti mismo o nadie lo hará",
+			"Una lecciï¿½n aprendida es una lecciï¿½n ganada",
+			"Debes creer en ti mismo o nadie lo harï¿½",
 			"El camino a la sabiduria es sencillo para aquellos que no se dejan cegar por el ego" };
 	private static String [] error = {"El mejor profesor, el fracaso es.",
 			"El miedo es el camino hacia el Lado Oscuro. El miedo lleva a la ira, la ira lleva al odio, el odio lleva al sufrimiento. Percibo mucho miedo en ti",
 			"Tu carencia de fe resulta molesta",
 			"La capacidad de hablar no te hace inteligente",
-			"Concéntrate en el momento. Siente, no pienses, usa tu instinto",
+			"Concï¿½ntrate en el momento. Siente, no pienses, usa tu instinto",
 			"No lo intentes. Hazlo, o no lo hagas, pero no lo intentes",
 			"Paciencia, utiliza la Fuerza. Piensa",
-			"Siento una perturbación en la fuerza",
+			"Siento una perturbaciï¿½n en la fuerza",
 			"El lado oscurso se intensifica en ti",
 			"El primer paso para corregir un error es la paciencia",
 			"El exceso de confianza es el mas peligroso de los descuidos",
